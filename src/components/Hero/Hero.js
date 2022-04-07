@@ -155,7 +155,7 @@ function Hero() {
             </Link>
           </HeroItem>
           <HeroItem>
-            <Link to="/service">
+            <Link to="/services">
               <HeroCirlce big>OUR SERVICES</HeroCirlce>
             </Link>
           </HeroItem>

@@ -19,9 +19,14 @@ const FooterRow = styled.div`
   padding: 40px;
   padding-bottom: 0;
   display: flex;
-  gap: 10px;
   flex-wrap: wrap;
-  justify-content: space-between;
+  flex-direction: column;
+  gap: 40px;
+  @media (min-width: 768px) {
+    gap: 10px;
+    flex-direction: row;
+    justify-content: space-between;
+  }
 `;
 const FooterLogoBox = styled.div``;
 const FooterText = styled.p`
@@ -35,8 +40,10 @@ const FooterItem = styled.li`
   margin-bottom: 30px;
 `;
 const FooterBox = styled.div`
-  border-left: 1px solid #777;
-  padding-left: 20px;
+  @media (min-width: 768px) {
+    padding-left: 20px;
+    border-left: 1px solid #777;
+  }
 `;
 const FooterAddress = styled.address`
   display: inline-block;

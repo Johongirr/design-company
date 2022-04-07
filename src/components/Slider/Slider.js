@@ -10,6 +10,7 @@ const SliderWrapper = styled.div`
   display: flex;
   align-items: center;
   margin: 100px 0;
+  background: url(${Image});
 `;
 const SliderBox = styled.div`
   height: 500px;
@@ -23,7 +24,7 @@ const SliderBox = styled.div`
     left: 0;
     width: 250px;
     height: 100%;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgb(23, 23, 23, 0.8);
     z-index: 22;
     @media (max-width: 800px) {
       width: 80px;
@@ -36,7 +37,7 @@ const SliderBox = styled.div`
     right: 0;
     width: 250px;
     height: 100%;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgb(23, 23, 23, 0.8);
     z-index: 22;
     @media (max-width: 800px) {
       width: 80px;
@@ -81,7 +82,7 @@ const SliderImgBox = styled.figure`
   display: flex;
   gap: 20px;
   transition: all 0.5s ease-out;
-  transform: translateX(260px);
+  transform: translateX(140px);
 `;
 
 function Slider() {
@@ -93,14 +94,14 @@ function Slider() {
   useEffect(() => {
     if (count >= 0 && count < 12 && isLeftSlideActive) {
       console.log(count);
-      imgBoxRef.current.style = `transform: translateX(-${count * 250}px)`;
+      imgBoxRef.current.style = `transform: translateX(-${count * 210}px)`;
       if (count === 0) {
-        imgBoxRef.current.style = `transform: translateX(270px)`;
+        imgBoxRef.current.style = `transform: translateX(140px)`;
       }
     }
     if (count < 11 && isRightSlideActive) {
       console.log(count);
-      imgBoxRef.current.style = `transform: translateX(-${count * 230}px)`;
+      imgBoxRef.current.style = `transform: translateX(-${count * 220}px)`;
     }
   }, [count, isRightSlideActive, isLeftSlideActive]);
 
