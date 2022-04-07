@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaPlay } from "react-icons/fa";
 import GalleryVideoThumbnail from "../../assets/Rectangle 37.png";
 import styled from "styled-components";
 import { ServiceOverlay as GalleryOverlay } from "../../pages/Services/Services";
+import VideoModal from "../Modal/Modal";
+import { useVideoPlayer } from "../../customHooks/videoPlayer";
 
 const GalleryVideoImgBox = styled.figure`
   position: relative;
@@ -32,11 +34,13 @@ const GalleryVideoPlayBtn = styled.button`
 `;
 
 function GalleryVideo() {
+  const { open, onOpenModal, closeModal } = useVideoPlayer();
   return (
     <GalleryVideoImgBox>
+      <VideoModal closeModal={closeModal} open={open} />
       <GalleryVideoImg src={GalleryVideoThumbnail} alt="gallery thumbnail" />
       <GalleryOverlay>
-        <GalleryVideoPlayBtn>
+        <GalleryVideoPlayBtn onClick={onOpenModal}>
           <FaPlay />
         </GalleryVideoPlayBtn>
       </GalleryOverlay>

@@ -23,6 +23,8 @@ button {
     border: 0;
 }
 
+
+/* customizing reviews slider */
 .swiper-button-next, .swiper-button-prev {
    
   width: 60px !important;
@@ -47,6 +49,7 @@ button {
     font-size: 25px !important;
 }
 
+/* customiziing accordion */
 .accordion__content {
     overflow: hidden;
      max-height: 0;
@@ -59,6 +62,8 @@ button {
     transition: all 0.5s cubic-bezier(1,0,1,0);   
 }
 
+
+/* customizing link */
 .link {
     position: relative;
     font-size: 30px;
@@ -76,4 +81,25 @@ button {
   background: #fff;
   left: 0;
   width: 100%;
+}
+
+/* customizing modal */
+.customModal {
+    background: #121212 !important;
+    color: #fff;
+    max-width: 1200px;
+    padding: 20px !important;
+    z-index: 9999;
+    overflow-y: hidden !important;
+}
+ 
+.customCloseButton {
+    color: #fff;
+    font-size: 25px;
+    top: 5px;
+    margin-top: -10px;
+}
+
+.customModalContainer {
+    margin: 0 auto;
 }

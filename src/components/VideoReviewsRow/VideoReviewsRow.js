@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import VideoReview1 from "../../assets/video-review.png";
 import VideoReview2 from "../../assets/video-review-2.png";
 import { ServiceOverlay as VideoReviewOverlay } from "../../pages/Services/Services";
 import { FaPlay } from "react-icons/fa";
+import VideoModal from "../Modal/Modal";
+import { useVideoPlayer } from "../../customHooks/videoPlayer";
 
 const VideoReviewsGrid = styled.div`
   display: flex;
@@ -42,12 +44,17 @@ const VideoReviewPlayBtn = styled.button`
 `;
 
 function VideoReviewsRow() {
+  const { open, closeModal, onOpenModal } = useVideoPlayer();
+  // const [open, setOpen] = useState(false);
+  // const closeModal = () => setOpen(false);
+  // const onOpenModal = () => setOpen(true);
+
   return (
     <VideoReviewsGrid>
       <VideoReviewsBox>
         <VideoReviewImg src={VideoReview1} alt="video review guy img" />
         <VideoReviewOverlay>
-          <VideoReviewPlayBtn>
+          <VideoReviewPlayBtn onClick={onOpenModal}>
             <FaPlay />
           </VideoReviewPlayBtn>
         </VideoReviewOverlay>
@@ -55,11 +62,12 @@ function VideoReviewsRow() {
       <VideoReviewsBox>
         <VideoReviewImg src={VideoReview2} alt="video review guy img" />
         <VideoReviewOverlay>
-          <VideoReviewPlayBtn>
+          <VideoReviewPlayBtn onClick={onOpenModal}>
             <FaPlay />
           </VideoReviewPlayBtn>
         </VideoReviewOverlay>
       </VideoReviewsBox>
+      <VideoModal closeModal={closeModal} open={open} />
     </VideoReviewsGrid>
   );
 }

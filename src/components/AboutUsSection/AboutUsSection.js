@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Img from "../../assets/Rectangle 37.png";
+import VideoModal from "../Modal/Modal";
 import { Wrapper } from "../../App";
+import { useVideoPlayer } from "../../customHooks/videoPlayer";
 
 const AboutBox = styled.section`
   display: flex;
@@ -64,12 +66,13 @@ const AboutDescription = styled.p`
 `;
 
 function AboutUsSection() {
+  const { open, onOpenModal, closeModal } = useVideoPlayer();
   return (
     <AboutBox>
       <AboutImgBox>
         <AboutImg src={Img} />
         <AboutOverlay>
-          <AboutVideoPlayBtn>
+          <AboutVideoPlayBtn onClick={onOpenModal}>
             <svg
               width="21"
               height="24"
@@ -86,6 +89,7 @@ function AboutUsSection() {
         </AboutOverlay>
       </AboutImgBox>
       <AboutTextBox>
+        <VideoModal open={open} closeModal={closeModal} />
         <AboutHeader>
           <AboutTitle>
             ABOUT US

@@ -3,7 +3,10 @@ import Contact from "../../components/Contact/Contact";
 import { Wrapper } from "../../App";
 import Img from "../../assets/Rectangle 28.png";
 import styled from "styled-components";
+import VideoModal from "../../components/Modal/Modal";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
+import { useVideoPlayer } from "../../customHooks/videoPlayer";
+import { useAccordion } from "../../customHooks/accordion";
 
 const ServiceBox = styled.section`
   display: grid;
@@ -120,22 +123,16 @@ const AccordionContent = styled.p`
 `;
 
 function Services() {
-  const [selected, setSelected] = useState(null);
-  const vals = Array.of(1, 2, 3, 4);
-  const handleClick = (index, i) => {
-    console.log(index);
-    if (selected === index) {
-      return setSelected(null);
-    }
-    setSelected(index);
-  };
+  const { open, closeModal, onOpenModal } = useVideoPlayer();
+  const { selected, vals, handleClick } = useAccordion();
   return (
     <Wrapper>
+      <VideoModal open={open} closeModal={closeModal} openModal={onOpenModal} />
       <ServiceBox>
         <ServiceImgBox>
           <ServiceImg src={Img} alt="Service img" />
           <ServiceOverlay>
-            <ServiceVideoPlayBtn>
+            <ServiceVideoPlayBtn onClick={onOpenModal}>
               <svg
                 width="21"
                 height="24"

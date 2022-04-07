@@ -10,6 +10,7 @@
     "react-dom": "^17.0.0",
     "react-icons": "^4.3.1",
     "react-phone-number-input": "^3.1.49",
+    "react-responsive-modal": "^6.2.0",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.0",
     "react-slick": "^0.28.1",
@@ -40,5 +41,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "terser-brunch": "^4.1.0"
   }
 }

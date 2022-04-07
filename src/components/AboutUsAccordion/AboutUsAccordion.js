@@ -1,5 +1,8 @@
 import React, { useRef, useState, useEffect } from "react";
 import styled, { css } from "styled-components";
+import VideoModal from "../Modal/Modal";
+import { useVideoPlayer } from "../../customHooks/videoPlayer";
+import { useAccordion } from "../../customHooks/accordion";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import Img1 from "../../assets/Rectangle 24.png";
 import Img2 from "../../assets/Rectangle 25.png";
@@ -47,7 +50,7 @@ const AccordionImgBox = styled.figure`
     border-radius: 15px;
     height: 88%;
     transition: all 0.5s ease-out;
-    z-index: 9999;
+    z-index: 99;
   }
   &:hover::before {
     background: rgba(0, 0, 0, 0.4);
@@ -60,6 +63,7 @@ const AccordionContent = styled.img`
   border-radius: 15px;
   margin-top: 20px;
   object-fit: cover;
+  z-index: 0;
    
 `;
 const AccordionPlayBtn = styled.button`
@@ -79,21 +83,15 @@ const AccordionPlayBtn = styled.button`
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  z-index: 9999;
+  z-index: 999;
 `;
 
 function AboutUsAccordion() {
-  const [selected, setSelected] = useState(null);
-  const vals = Array.of(1, 2, 3, 4);
-  const handleClick = (index, i) => {
-    console.log(index);
-    if (selected === index) {
-      return setSelected(null);
-    }
-    setSelected(index);
-  };
+  const { open, onOpenModal, closeModal } = useVideoPlayer();
+  const { selected, vals, handleClick } = useAccordion();
   return (
     <AccordionSection>
+      <VideoModal open={open} closeModal={closeModal} />
       <AboutAccordionHeader>
         <AboutAccordionTitle>
           FREQUENTLY ASKED <span style={{ color: "#ffe99c" }}>QUESTIONS</span>
@@ -116,7 +114,7 @@ function AboutUsAccordion() {
               }
             >
               <AccordionContent src={Img1} />
-              <AccordionPlayBtn>
+              <AccordionPlayBtn onClick={onOpenModal}>
                 <FaPlay />
               </AccordionPlayBtn>
             </AccordionImgBox>
